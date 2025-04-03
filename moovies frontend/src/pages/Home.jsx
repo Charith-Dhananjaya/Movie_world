@@ -86,8 +86,8 @@ function Home() {
         <button onClick={() => searchMoviesByVotes()} className="vote-button">
           Find by votes
         </button>
-        <label for="Rating">Choose a Rating:</label>
-        <select id="Rating" name="Rating"  onChange={e => handleChange(e.target.value)}>
+        <label for="Rating" className="rating">Choose a Rating:</label>
+        <select id="Rating" name="Rating"  onChange={e => handleChange(e.target.value)} className="dropdown">
          <option value="1">1</option>
          <option value="2">2</option>
          <option value="3">3</option>

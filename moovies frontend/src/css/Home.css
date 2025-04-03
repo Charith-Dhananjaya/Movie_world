@@ -38,11 +38,40 @@
     transition: background-color 0.2s;
     white-space: nowrap;
   }
+  .vote-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #e50914;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+  }
   
+  .vote-button:hover{
+    background-color: #f40612;
+  }
   .search-button:hover {
     background-color: #f40612;
   }
-  
+  .rating{
+    background-color: #e50914;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+
+  }
+  .dropdown{
+    transition: background-color 0.2s;
+    padding: 0.75rem 1.5rem;
+    color: #000;
+    border-radius: 4px;
+    font-weight: 500;
+    background-color: #ffffff;
+  }
   
   @media (max-width: 639px) {
     .home {

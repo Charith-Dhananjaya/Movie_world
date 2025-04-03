@@ -64,6 +64,42 @@
     justify-content: center;
     transition: background-color 0.2s;
   }
+
+  .counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%; 
+    max-width: 150px;
+    margin: 0 auto; 
+  }
+
+  .minus-button, .plus-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.minus-button:hover, .plus-button:hover {
+  background-color: rgba(219, 214, 214, 0.8); 
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    min-width: 30px; 
+    text-align: center;
+}
   
   .favorite-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
@@ -117,6 +153,11 @@
     }
   
     .favorite-btn {
+      width: 32px;
+      height: 32px;
+      font-size: 1.2rem;
+    }
+    .minus-button{
       width: 32px;
       height: 32px;
       font-size: 1.2rem;
