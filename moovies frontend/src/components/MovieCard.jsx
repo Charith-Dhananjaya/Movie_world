@@ -51,11 +51,11 @@ function MovieCard({ movie }) {
         <h3>{movie.title}</h3>
         <p>{movie.release_date?.split("-")[0]}</p>
         <div className="counter-container">
-          <button className="minus-button" onClick={() => decrease()}>
+          <button className="minus-button" data-testid="minus" onClick={() => decrease()}>
             -
           </button>
-          <div className="value">{count}</div>
-          <button className="plus-button" onClick={() => increase()}>
+          <div className="value" data-testid="count">{count}</div>
+          <button className="plus-button" data-testid="plus" onClick={() => increase()}>
             +
           </button>
         </div>
