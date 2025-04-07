@@ -33,3 +33,9 @@ const BASE_URL_PREFIX ="http://localhost:8000/aboutUs"
     const data = await response.json();
     return data.result;
   };
+
+  export const getContactUsData = async () => {
+    const response = await fetch(`${BASE_URL_PREFIX}/getContactUs`);
+    const data = await response.json();
+    return data.result;
+  };

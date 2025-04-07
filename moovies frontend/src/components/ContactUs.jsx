@@ -3,7 +3,25 @@ import locationImage from "../assets/location.png";
 import email from "../assets/email.png";
 import phone from "../assets/phone.png";
 import web from "../assets/web.png";
+import { useEffect, useState } from "react";
+import { getContactUsData } from "../services/api";
+
 function ContactUs() {
+  const [data, setData] = useState("");
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const loadContactUsData = async () => {
+      try {
+        const contactUsData = await getContactUsData();
+        console.log(contactUsData);
+        setData(contactUsData);
+      } catch (err) {
+        console.log(err);
+        setError("failed to load contactUsData");
+      }
+    };
+    loadContactUsData();
+  }, []);
   const sendMessage = () => {};
 
   return (
@@ -14,23 +32,32 @@ function ContactUs() {
           <p>We are open for any suggetions or just to have chat</p>
           <div className="contact-info">
             <img src={locationImage} alt="location" />
-            <h3>Address</h3>
+            <h4>
+              <strong>Address:</strong> {data.address}
+            </h4>
           </div>
 
           <div className="contact-info">
             <img src={phone} alt="phone" />
-            <h3>Phone</h3>
+            <h4>
+              <strong>Phone:</strong> {data.phone}
+            </h4>
           </div>
 
           <div className="contact-info">
             <img src={email} alt="email" />
-            <h3>Email</h3>
+            <h4>
+              <strong>Email:</strong> {data.email}
+            </h4>
           </div>
 
           <div className="contact-info">
             <img src={web} alt="web" />
-            <h3>Web</h3>
+            <h4>
+              <strong>Web:</strong> {data.web}
+            </h4>
           </div>
+          {error && <div className="error-message">{error}</div>}
         </div>
         <div className="right">
           <div className="title">
@@ -70,7 +97,6 @@ function ContactUs() {
                 required
               />
             </label>
-            
           </form>
           <button type="submit">Send Message</button>
         </div>

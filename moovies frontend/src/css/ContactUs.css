@@ -1,10 +1,12 @@
 .contactus {
+    position: fixed;
     height: 100vh;
     width: 100vw;
     background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
   }
   
   .box {
@@ -32,7 +34,7 @@
 
 .left p {
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .left img {
@@ -47,11 +49,17 @@
     display: flex;
     flex-direction: row;
     align-items: center;  
-    margin-bottom: 2rem;  
+    margin-bottom: 2rem;
+    
   }
   
   .contact-info img {
+   
     margin-right: 1rem; 
+  }
+  .contact-info h4 {
+   
+    font-weight: 400;
   }
   
   .add-details {
@@ -66,7 +74,7 @@
   }
   
 .add-details label,
-.add-details h3 {
+.add-details h4 {
   color: black; 
   margin-top: 1rem;
 }
