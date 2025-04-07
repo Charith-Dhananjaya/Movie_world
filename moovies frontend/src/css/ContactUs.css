@@ -64,7 +64,8 @@
   
   .add-details {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column; 
+    font-weight: 600; 
     
   }
   .row{

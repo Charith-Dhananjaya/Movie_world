@@ -4,11 +4,20 @@ import email from "../assets/email.png";
 import phone from "../assets/phone.png";
 import web from "../assets/web.png";
 import { useEffect, useState } from "react";
-import { getContactUsData } from "../services/api";
+import { getContactUsData, addContactUsData } from "../services/api";
 
 function ContactUs() {
   const [data, setData] = useState("");
   const [error, setError] = useState(null);
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  console.log(formData);
+
   useEffect(() => {
     const loadContactUsData = async () => {
       try {
@@ -22,7 +31,25 @@ function ContactUs() {
     };
     loadContactUsData();
   }, []);
-  const sendMessage = () => {};
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await addContactUsData(formData);
+      console.log(formData);
+      console.log("Message sent successfully:", response);
+  
+      setFormData({
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+  
+    } catch (error) {
+      console.error("Failed to send message:", error);
+    }
+  };
 
   return (
     <div className="contactus">
@@ -70,13 +97,26 @@ function ContactUs() {
                 <input
                   type="text"
                   name="fullName"
+                  value={formData.fullName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, fullName: e.target.value })
+                  }
                   placeholder="Name"
                   required
                 />
               </label>
               <label className="email">
                 EMAIL
-                <input type="text" name="email" placeholder="Email" required />
+                <input
+                  type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  placeholder="Email"
+                  required
+                />
               </label>
             </div>
             <label className="subject">
@@ -84,6 +124,10 @@ function ContactUs() {
               <input
                 type="text"
                 name="subject"
+                value={formData.subject}
+                onChange={(e) =>
+                  setFormData({ ...formData, subject: e.target.value })
+                }
                 placeholder="Subject"
                 required
               />
@@ -93,12 +137,18 @@ function ContactUs() {
               <input
                 type="text"
                 name="message"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
                 placeholder="Message"
                 required
               />
             </label>
+            <div className="button">
+              <button type="submit">Send Message</button>
+            </div>
           </form>
-          <button type="submit">Send Message</button>
         </div>
       </div>
     </div>
