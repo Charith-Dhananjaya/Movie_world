@@ -36,16 +36,25 @@ export const getContactUsData = async () => {
   return data.result;
 };
 
+// export const addContactUsData = async (formData) => {
+//   const response = await fetch(`${BASE_URL_PREFIX}/addContactUs`, {
+//     method: "POST",
+//     body: JSON.stringify({
+//       name: formData.fullName,
+//       email: formData.email,
+//       subject: formData.subject,
+//       message: formData.message,
+//     }),
+//     headers: { "Content-Type": "application/json" },
+//   });
+//   const data = await response.json();
+//   return data.result;
+// };
+
 export const addContactUsData = async (formData) => {
   const response = await fetch(`${BASE_URL_PREFIX}/addContactUs`, {
     method: "POST",
-    body: JSON.stringify({
-      name: formData.fullName,
-      email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-    }),
-    headers: { "Content-Type": "application/json" },
+    body: formData, 
   });
   const data = await response.json();
   return data.result;

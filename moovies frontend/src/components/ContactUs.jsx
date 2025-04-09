@@ -15,6 +15,7 @@ function ContactUs() {
     email: "",
     subject: "",
     message: "",
+    file: null,
   });
   console.log(formData);
 
@@ -34,9 +35,19 @@ function ContactUs() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+  
     try {
-      const response = await addContactUsData(formData);
-      console.log(formData);
+      const form = new FormData();
+      form.append("fullName", formData.fullName);
+      form.append("email", formData.email);
+      form.append("subject", formData.subject);
+      form.append("message", formData.message);
+      if (formData.file) {
+        form.append("file", formData.file); 
+      }
+  
+      const response = await addContactUsData(form); 
+  
       console.log("Message sent successfully:", response);
   
       setFormData({
@@ -44,6 +55,7 @@ function ContactUs() {
         email: "",
         subject: "",
         message: "",
+        file: null,
       });
   
     } catch (error) {
@@ -143,6 +155,17 @@ function ContactUs() {
                 }
                 placeholder="Message"
                 required
+              />
+            </label>
+            <label className="file">
+              ATTACH FILE / IMAGE
+              <input
+                type="file"
+                name="file"
+                onChange={(e) =>
+                  setFormData({ ...formData, file: e.target.files[0] })
+                }
+                accept="image/*,.pdf,.doc,.docx"
               />
             </label>
             <div className="button">
