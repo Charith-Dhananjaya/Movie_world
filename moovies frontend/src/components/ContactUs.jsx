@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { getContactUsData, addContactUsData } from "../services/api";
 
 function ContactUs() {
-  const [data, setData] = useState("");
+  const [data, setData] = useState({});
   const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
